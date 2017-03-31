@@ -5,22 +5,33 @@
   <Category>Network:Web Network:Proxy</Category>
   <Name>nginx-rtmp-docker</Name>
   <Project>https://github.com/tiangolo/nginx-rtmp-docker</Project>
-  <Overview>
-    Docker image with Nginx using the nginx-rtmp-module module for live multimedia (video) streaming.
-  </Overview>
-  <Description>
-    This Docker image can be used to create an RTMP server for multimedia / video streaming using Nginx and nginx-rtmp-module, built from the current latest sources (Nginx 1.11.3 and nginx-rtmp-module 1.1.9). This was inspired by other similar previous images from dvdgiessen, jasonrivers, aevumdecessus and by an OBS Studio post. The main purpose (and test case) to build it was to allow streaming from OBS Studio to different clients at the same time.
-  </Description>
+  <Overview>Docker image with Nginx using the nginx-rtmp-module module for live multimedia (video) streaming.</Overview>
+  <Description>This Docker image can be used to create an RTMP server for multimedia / video streaming using Nginx and nginx-rtmp-module, built from the current latest sources (Nginx 1.11.3 and nginx-rtmp-module 1.1.9). This was inspired by other similar previous images from dvdgiessen, jasonrivers, aevumdecessus and by an OBS Studio post. The main purpose (and test case) to build it was to allow streaming from OBS Studio to different clients at the same time.</Description>
   <Registry>https://registry.hub.docker.com/u/tiangolo/nginx-rtmp/</Registry>
   <GitHub>https://github.com/tiangolo/nginx-rtmp-docker</GitHub>
   <Repository>tiangolo/nginx-rtmp</Repository>
   <BindTime>true</BindTime>
-  <Privileged>true</Privileged>
+  <Privileged>false</Privileged>
+  <Environment>
+    <Variable>
+      <Name>PUID</Name>
+      <Value>99</Value>
+    </Variable>
+    <Variable>
+      <Name>PGID</Name>
+      <Value>100</Value>
+    </Variable>
+  </Environment>
   <Networking>
-    <Mode>host</Mode>
-    <Publish/>
+    <Mode>bridge</Mode>
+    <Publish>
+      <Port>
+        <HostPort>1954</HostPort>
+        <ContainerPort>1954</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+    </Publish>
   </Networking>
-  <Environment/>
   <Data>
     <Volume>
       <HostDir>/mnt/user/appdata/nginx</HostDir>
