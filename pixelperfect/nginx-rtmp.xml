@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Containers>
-  <Date>2017-03-22</Date>
+  <Date>2016-08-30</Date>
   <Beta>False</Beta>
-  <Category>MediaApp:Video MediaApp:Music MediaApp:Photos MediaServer:Video MediaServer:Music MediaServer:Photos</Category>
-  <Name>PlexMediaServer</Name>
-  <Project>https://plex.tv/</Project>
-  <Changes>
+  <Category>Network:Web Network:Proxy</Category>
+  <Name>nginx-rtmp-docker</Name>
+  <Project>https://github.com/tiangolo/nginx-rtmp-docker</Project>
 [center][img width='155px' src='http://d2631fvi2jdnb6.cloudfront.net/docker/limetech.png'][/center]
 
 [center][font size=4]Plex Media Server Change Log[/font][/center]
@@ -89,18 +88,14 @@
 - Initial Release
   </Changes>
   <Overview>
-    The Plex Media Server enriches your life by organizing all your personal media, presenting it beautifully and streaming it to all of your devices. It's easy to use, it's awesome, and it's free!
+    Docker image with Nginx using the nginx-rtmp-module module for live multimedia (video) streaming.
   </Overview>
   <Description>
-    The Plex Media Server enriches your life by organizing all your personal media, presenting it beautifully and streaming it to all of your devices. It's easy to use, it's awesome, and it's free![br][br]
-    [b][span style='color: #E80000;']Directions:[/span][/b][br]
-    [b]/config[/b] : this is where PMS will store it's databases and configuration.[br][br]
-    [b]Tip:[/b] You can add more volume mappings if you wish PMS has access to it.
+    This Docker image can be used to create an RTMP server for multimedia / video streaming using Nginx and nginx-rtmp-module, built from the current latest sources (Nginx 1.11.3 and nginx-rtmp-module 1.1.9). This was inspired by other similar previous images from dvdgiessen, jasonrivers, aevumdecessus and by an OBS Studio post. The main purpose (and test case) to build it was to allow streaming from OBS Studio to different clients at the same time.
   </Description>
-  <Registry>https://registry.hub.docker.com/u/limetech/plex/</Registry>
-  <GitHub>https://github.com/limetech/dockerapp-plex</GitHub>
-  <Repository>limetech/plex</Repository>
-  <Support>http://lime-technology.com/forum/index.php?topic=40654.0</Support>
+  <Registry>https://registry.hub.docker.com/u/tiangolo/nginx-rtmp/</Registry>
+  <GitHub>https://github.com/tiangolo/nginx-rtmp-docker</GitHub>
+  <Repository>tiangolo/nginx-rtmp</Repository>
   <BindTime>true</BindTime>
   <Privileged>true</Privileged>
   <Networking>
@@ -110,12 +105,12 @@
   <Environment/>
   <Data>
     <Volume>
-      <HostDir>/mnt/user/appdata/PlexMediaServer</HostDir>
-      <ContainerDir>/config</ContainerDir>
+      <HostDir>/mnt/user/appdata/nginx</HostDir>
+      <ContainerDir>/etc/nginx</ContainerDir>
       <Mode>rw</Mode>
     </Volume>
   </Data>
-  <WebUI>http://[IP]:[PORT:32400]/web/index.html</WebUI>
-  <Banner></Banner>
-  <Icon>http://d2631fvi2jdnb6.cloudfront.net/docker/limetech/plex.png</Icon>
+  <WebUI>http://[IP]:[PORT:1954]/</WebUI>
+  <Banner>https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/nginx-banner.png</Banner>
+  <Icon>https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/nginx-icon.png</Icon>
 </Containers>
