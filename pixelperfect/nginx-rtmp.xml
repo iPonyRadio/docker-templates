@@ -3,7 +3,7 @@
   <Date>2016-08-30</Date>
   <Beta>False</Beta>
   <Category>Network:Web Network:Proxy</Category>
-  <Name>nginx-rtmp-docker</Name>
+  <Name>nginx-rtmp</Name>
   <Project>https://github.com/tiangolo/nginx-rtmp-docker</Project>
   <Overview>Docker image with Nginx using the nginx-rtmp-module module for live multimedia (video) streaming.</Overview>
   <Description>This Docker image can be used to create an RTMP server for multimedia / video streaming using Nginx and nginx-rtmp-module, built from the current latest sources (Nginx 1.11.3 and nginx-rtmp-module 1.1.9). This was inspired by other similar previous images from dvdgiessen, jasonrivers, aevumdecessus and by an OBS Studio post. The main purpose (and test case) to build it was to allow streaming from OBS Studio to different clients at the same time.</Description>
@@ -26,8 +26,8 @@
     <Mode>bridge</Mode>
     <Publish>
       <Port>
-        <HostPort>1954</HostPort>
-        <ContainerPort>1954</ContainerPort>
+        <HostPort>1935</HostPort>
+        <ContainerPort>1935</ContainerPort>
         <Protocol>tcp</Protocol>
       </Port>
     </Publish>
@@ -39,7 +39,7 @@
       <Mode>rw</Mode>
     </Volume>
   </Data>
-  <WebUI>http://[IP]:[PORT:1954]/</WebUI>
+  <WebUI>http://[IP]:[PORT:1935]/</WebUI>
   <Banner>https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/nginx-banner.png</Banner>
   <Icon>https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/nginx-icon.png</Icon>
 </Containers>
